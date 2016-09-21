@@ -20,7 +20,8 @@ Uasge:
         ```using Microsoft.AspNet.Identity.EntityFramework; ```
     with
         ```using AspNet.Identity.SQLite; ```
-8. set ApplicationDbContext to derive from SQLiteDatabase: 
+8. Add this project reference (AspNet.Identity.SQLite.dll) to the MVC project
+9. set ApplicationDbContext to derive from SQLiteDatabase: 
     ```
         public class ApplicationDbContext : SQLiteDatabase
         {
@@ -35,12 +36,12 @@ Uasge:
             }
         }
      ```
-9.  Open the IdentityConfig.cs file. In the ApplicationUserManager.Create method, replace instantiating UserManager with the following code:
+10.  Open the IdentityConfig.cs file. In the ApplicationUserManager.Create method, replace instantiating UserManager with the following code:
   ```
         var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>() as SQLiteDatabase));
   ```
-10. replace the DefaultConnection with your connection string in web.config
-11. Test it and have fun
+11. replace the DefaultConnection with your connection string in web.config
+12. Test it and have fun
 
 
 # Usage Refrence:
