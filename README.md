@@ -1,7 +1,7 @@
 # AspNet.Identity.SQLite
 AspNet Identity SQLite Provider
 
-This is SQLite Provider for Asp.net Identity which is creadted following Micsoft's guide below:
+This is SQLite Provider for Asp.net Identity which is creadted following Microsoft's guide below:
 
 Overview of Custom Storage Providers for ASP.NET Identity
 http://www.asp.net/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
