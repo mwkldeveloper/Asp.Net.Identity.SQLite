@@ -1,5 +1,5 @@
-# AspNet.Identity.SQLite
-AspNet Identity SQLite Provider
+# Asp.Net.Identity.SQLite
+Asp.Net Identity SQLite Provider
 
 This is SQLite Provider for Asp.net Identity which is creadted following Microsoft's guide below:
 
