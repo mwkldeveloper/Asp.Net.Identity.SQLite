@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 
-namespace AspNet.Identity.MySQL
+namespace AspNet.Identity.SQLite
 {
     /// <summary>
     /// Class that implements the ASP.NET Identity

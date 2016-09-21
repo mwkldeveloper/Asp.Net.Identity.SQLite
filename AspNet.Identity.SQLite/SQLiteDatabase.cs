@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AspNet.Identity.MySQL
+namespace AspNet.Identity.SQLite
 {
     public class SQLiteDatabase : IDisposable
     {

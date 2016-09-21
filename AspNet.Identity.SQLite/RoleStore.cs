@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNet.Identity.MySQL
+namespace AspNet.Identity.SQLite
 {
     /// <summary>
     /// Class that implements the key ASP.NET Identity role store iterfaces

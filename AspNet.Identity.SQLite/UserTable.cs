@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNet.Identity.MySQL
+namespace AspNet.Identity.SQLite
 {
     /// <summary>
     /// Class that represents the AspNetUsers table in the MySQL Database
