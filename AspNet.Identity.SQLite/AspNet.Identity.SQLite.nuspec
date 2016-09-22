@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Marcus Wong</authors>
+    <owners>Marcus Wong</owners>
+    <licenseUrl>https://github.com/leung85/Asp.Net.Identity.SQLite/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/leung85/Asp.Net.Identity.SQLite</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SQLite Provider for Asp.net Identity</description>
+    <releaseNotes>init release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>SQLite Asp.Net Identity</tags>
+    <dependencies>
+        <dependency id="System.Data.SQLite" version="1.0.103" />
+        <dependency id="Microsoft.AspNet.Identity.Core" version="2.2.1" />
+    </dependencies>
+  </metadata>
+</package>
