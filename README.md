@@ -1,5 +1,5 @@
-# AspNet.Identity.SQLite
-AspNet Identity SQLite Provider
+# Asp.Net.Identity.SQLite
+Asp.Net Identity SQLite Provider
 
 This is SQLite Provider for Asp.net Identity which is creadted following Microsoft's guide below:
 
@@ -44,7 +44,7 @@ Uasge:
 12. Test it and have fun
 
 
-# Usage Refrence:
+# Usage Reference:
 
 Implementing a Custom MySQL ASP.NET Identity Storage Provide
 http://www.asp.net/identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
