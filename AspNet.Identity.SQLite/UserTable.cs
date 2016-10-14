@@ -20,6 +20,9 @@ namespace AspNet.Identity.SQLite
             _database = database;
         }
 
+
+   
+
         /// <summary>
         /// Returns the user's name given a user id
         /// </summary>
@@ -45,6 +48,37 @@ namespace AspNet.Identity.SQLite
 
             return _database.GetStrValue(commandText, parameters);
         }
+
+        /// <summary>
+        /// Return all user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public IEnumerable<TUser> GetUsers()
+        {
+            List<TUser> userlist = new List<TUser>();
+            string commandText = "Select * from AspNetUsers";
+            var rows = _database.Query(commandText, null);
+            foreach (var row in rows)
+            {
+                TUser user = null;
+                user = (TUser)Activator.CreateInstance(typeof(TUser));
+                user.Id = row["Id"];
+                user.UserName = row["UserName"];
+                user.PasswordHash = string.IsNullOrEmpty(row["PasswordHash"]) ? null : row["PasswordHash"];
+                user.SecurityStamp = string.IsNullOrEmpty(row["SecurityStamp"]) ? null : row["SecurityStamp"];
+                user.Email = string.IsNullOrEmpty(row["Email"]) ? null : row["Email"];
+                user.EmailConfirmed = row["EmailConfirmed"] == "1" ? true : false;
+                user.PhoneNumber = string.IsNullOrEmpty(row["PhoneNumber"]) ? null : row["PhoneNumber"];
+                user.PhoneNumberConfirmed = row["PhoneNumberConfirmed"] == "1" ? true : false;
+                user.LockoutEnabled = row["LockoutEnabled"] == "1" ? true : false;
+                user.LockoutEndDateUtc = string.IsNullOrEmpty(row["LockoutEndDateUtc"]) ? DateTime.Now : DateTime.Parse(row["LockoutEndDateUtc"]);
+                user.AccessFailedCount = string.IsNullOrEmpty(row["AccessFailedCount"]) ? 0 : int.Parse(row["AccessFailedCount"]);
+                userlist.Add(user);
+            }
+            return userlist;
+        }
+
 
         /// <summary>
         /// Returns an TUser given the user's id

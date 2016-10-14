@@ -10,7 +10,7 @@ namespace AspNet.Identity.SQLite
     /// <summary>
     /// Class that implements the key ASP.NET Identity user store iterfaces
     /// </summary>
-    public class UserStore<TUser> : IUserLoginStore<TUser>,
+    public class UserStore<TUser, TRole> : IUserLoginStore<TUser>,
         IUserClaimStore<TUser>,
         IUserRoleStore<TUser>,
         IUserPasswordStore<TUser>,
@@ -21,10 +21,11 @@ namespace AspNet.Identity.SQLite
         IUserTwoFactorStore<TUser, string>,
         IUserLockoutStore<TUser, string>,
         IUserStore<TUser>
-        where TUser : IdentityUser
+        where TUser : IdentityUser 
+        where TRole : IdentityRole
     {
         private UserTable<TUser> userTable;
-        private RoleTable roleTable;
+        private RoleTable<TRole> roleTable;
         private UserRolesTable userRolesTable;
         private UserClaimsTable userClaimsTable;
         private UserLoginsTable userLoginsTable;
@@ -34,7 +35,9 @@ namespace AspNet.Identity.SQLite
         {
             get
             {
-                throw new NotImplementedException();
+               return userTable.GetUsers().AsQueryable<TUser>();
+
+                //throw new NotImplementedException();
             }
         }
 
@@ -45,7 +48,7 @@ namespace AspNet.Identity.SQLite
         /// </summary>
         public UserStore()
         {
-            new UserStore<TUser>(new SQLiteDatabase());
+            new UserStore<TUser,TRole>(new SQLiteDatabase());
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace AspNet.Identity.SQLite
         {
             Database = database;
             userTable = new UserTable<TUser>(database);
-            roleTable = new RoleTable(database);
+            roleTable = new RoleTable<TRole>(database);
             userRolesTable = new UserRolesTable(database);
             userClaimsTable = new UserClaimsTable(database);
             userLoginsTable = new UserLoginsTable(database);

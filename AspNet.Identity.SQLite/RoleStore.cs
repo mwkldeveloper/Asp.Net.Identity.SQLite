@@ -11,14 +11,15 @@ namespace AspNet.Identity.SQLite
     public class RoleStore<TRole> : IQueryableRoleStore<TRole>
         where TRole : IdentityRole
     {
-        private RoleTable roleTable;
+        private RoleTable<TRole> roleTable;
         public SQLiteDatabase Database { get; private set; }
 
         public IQueryable<TRole> Roles
         {
             get
             {
-                throw new NotImplementedException();
+                return roleTable.GetRoles().AsQueryable<TRole>();
+               // throw new NotImplementedException();
             }
         }
 
@@ -39,7 +40,7 @@ namespace AspNet.Identity.SQLite
         public RoleStore(SQLiteDatabase database)
         {
             Database = database;
-            roleTable = new RoleTable(database);
+            roleTable = new RoleTable<TRole>(database);
         }
 
         public Task CreateAsync(TRole role)

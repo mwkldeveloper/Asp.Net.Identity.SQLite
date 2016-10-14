@@ -6,7 +6,7 @@ namespace AspNet.Identity.SQLite
     /// <summary>
     /// Class that represents the Role table in the MySQL Database
     /// </summary>
-    public class RoleTable 
+    public class RoleTable<TRole> where TRole : IdentityRole
     {
         private SQLiteDatabase _database;
 
@@ -99,6 +99,23 @@ namespace AspNet.Identity.SQLite
 
             return role;
 
+        }
+
+        public List<TRole> GetRoles()
+        {
+            List<TRole> rolelist = new List<TRole>();
+            string commandText = "Select * from AspNetRoles";
+            var rows = _database.Query(commandText, null);
+            foreach (var row in rows)
+            {
+                TRole role = null;
+                role = (TRole)Activator.CreateInstance(typeof(TRole));
+                role.Id = row["Id"];
+                role.Name = row["Name"];
+                
+                rolelist.Add(role);
+            }
+            return rolelist;
         }
 
         /// <summary>
