@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AspNet.Identity.SQLite
 {
     /// <summary>
-    /// Class that represents the Role table in the MySQL Database
+    /// Class that represents the Role table in the SQLite Database
     /// </summary>
     public class RoleTable<TRole> where TRole : IdentityRole
     {

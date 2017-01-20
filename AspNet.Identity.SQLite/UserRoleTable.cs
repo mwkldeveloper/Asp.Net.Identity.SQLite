@@ -3,7 +3,7 @@
 namespace AspNet.Identity.SQLite
 {
     /// <summary>
-    /// Class that represents the AspNetUserRoles table in the MySQL Database
+    /// Class that represents the AspNetUserRoles table in the SQLite Database
     /// </summary>
     public class UserRolesTable
     {

@@ -4,7 +4,7 @@ using System.Security.Claims;
 namespace AspNet.Identity.SQLite
 {
     /// <summary>
-    /// Class that represents the AspNetUserClaims table in the MySQL Database
+    /// Class that represents the AspNetUserClaims table in the SQLite Database
     /// </summary>
     public class UserClaimsTable
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AspNet.Identity.SQLite
 {
     /// <summary>
-    /// Class that represents the AspNetUserLogins table in the MySQL Database
+    /// Class that represents the AspNetUserLogins table in the SQLite Database
     /// </summary>
     public class UserLoginsTable
     {

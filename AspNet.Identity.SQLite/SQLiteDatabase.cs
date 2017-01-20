@@ -32,11 +32,11 @@ namespace AspNet.Identity.SQLite
         }
 
         /// <summary>
-        /// Executes a non-query MySQL statement
+        /// Executes a non-query SQLite statement
         /// </summary>
-        /// <param name="commandText">The MySQL query to execute</param>
+        /// <param name="commandText">The SQLite query to execute</param>
         /// <param name="parameters">Optional parameters to pass to the query</param>
-        /// <returns>The count of records affected by the MySQL statement</returns>
+        /// <returns>The count of records affected by the SQLite statement</returns>
         public int Execute(string commandText, Dictionary<string, object> parameters)
         {
             int result = 0;
@@ -61,9 +61,9 @@ namespace AspNet.Identity.SQLite
         }
 
         /// <summary>
-        /// Executes a MySQL query that returns a single scalar value as the result.
+        /// Executes a SQLite query that returns a single scalar value as the result.
         /// </summary>
-        /// <param name="commandText">The MySQL query to execute</param>
+        /// <param name="commandText">The SQLite query to execute</param>
         /// <param name="parameters">Optional parameters to pass to the query</param>
         /// <returns></returns>
         public object QueryValue(string commandText, Dictionary<string, object> parameters)
@@ -92,8 +92,8 @@ namespace AspNet.Identity.SQLite
         /// <summary>
         /// Executes a SQL query that returns a list of rows as the result.
         /// </summary>
-        /// <param name="commandText">The MySQL query to execute</param>
-        /// <param name="parameters">Parameters to pass to the MySQL query</param>
+        /// <param name="commandText">The SQLite query to execute</param>
+        /// <param name="parameters">Parameters to pass to the SQLite query</param>
         /// <returns>A list of a Dictionary of Key, values pairs representing the 
         /// ColumnName and corresponding value</returns>
         public List<Dictionary<string, string>> Query(string commandText, Dictionary<string, object> parameters)
@@ -165,10 +165,10 @@ namespace AspNet.Identity.SQLite
         }
 
         /// <summary>
-        /// Creates a MySQLCommand with the given parameters
+        /// Creates a SQLiteCommand with the given parameters
         /// </summary>
-        /// <param name="commandText">The MySQL query to execute</param>
-        /// <param name="parameters">Parameters to pass to the MySQL query</param>
+        /// <param name="commandText">The SQLite query to execute</param>
+        /// <param name="parameters">Parameters to pass to the SQLite query</param>
         /// <returns></returns>
         private SQLiteCommand CreateCommand(string commandText, Dictionary<string, object> parameters)
         {
@@ -180,10 +180,10 @@ namespace AspNet.Identity.SQLite
         }
 
         /// <summary>
-        /// Adds the parameters to a MySQL command
+        /// Adds the parameters to a SQLite command
         /// </summary>
-        /// <param name="commandText">The MySQL query to execute</param>
-        /// <param name="parameters">Parameters to pass to the MySQL query</param>
+        /// <param name="commandText">The SQLite query to execute</param>
+        /// <param name="parameters">Parameters to pass to the SQLite query</param>
         private static void AddParameters(SQLiteCommand command, Dictionary<string, object> parameters)
         {
             if (parameters == null)
@@ -203,8 +203,8 @@ namespace AspNet.Identity.SQLite
         /// <summary>
         /// Helper method to return query a string value 
         /// </summary>
-        /// <param name="commandText">The MySQL query to execute</param>
-        /// <param name="parameters">Parameters to pass to the MySQL query</param>
+        /// <param name="commandText">The SQLite query to execute</param>
+        /// <param name="parameters">Parameters to pass to the SQLite query</param>
         /// <returns>The string value resulting from the query</returns>
         public string GetStrValue(string commandText, Dictionary<string, object> parameters)
         {
