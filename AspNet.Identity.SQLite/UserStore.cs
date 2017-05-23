@@ -30,13 +30,14 @@ namespace AspNet.Identity.SQLite
         private UserClaimsTable userClaimsTable;
         private UserLoginsTable userLoginsTable;
         public SQLiteDatabase Database { get; private set; }
+		private bool DisposeContext;
 
-        public IQueryable<TUser> Users
+
+		public IQueryable<TUser> Users
         {
             get
             {
                return userTable.GetUsers().AsQueryable<TUser>();
-
                 //throw new NotImplementedException();
             }
         }
@@ -48,7 +49,9 @@ namespace AspNet.Identity.SQLite
         /// </summary>
         public UserStore()
         {
-            new UserStore<TUser,TRole>(new SQLiteDatabase());
+			DisposeContext = true;
+
+			new UserStore<TUser,TRole>(new SQLiteDatabase());
         }
 
         /// <summary>
@@ -57,7 +60,8 @@ namespace AspNet.Identity.SQLite
         /// <param name="database"></param>
         public UserStore(SQLiteDatabase database)
         {
-            Database = database;
+			DisposeContext = false;
+			Database = database;
             userTable = new UserTable<TUser>(database);
             roleTable = new RoleTable<TRole>(database);
             userRolesTable = new UserRolesTable(database);
@@ -147,8 +151,11 @@ namespace AspNet.Identity.SQLite
         {
             if (Database != null)
             {
-                Database.Dispose();
-                Database = null;
+				if (DisposeContext)
+				{
+					Database.Dispose();
+					Database = null;
+				}
             }
         }
 
