@@ -36,8 +36,15 @@ namespace AspNet.Identity.SQLite.EF
         /// <returns></returns>
         public int Delete(string userId)
         {
-            var userRoles = _database.AspNetUserRoles.Where(x => x.UserId == userId);
-             _database.AspNetUserRoles.RemoveRange(userRoles);
+            var user = _database.AspNetUsers.Find(userId);
+            var roles = user.AspNetRoles;
+            foreach (var role in roles)
+            {
+                roles.Remove(role);
+            }
+
+            //var userRoles = _database.AspNetUserRoles.Where(x => x.UserId == userId);
+            // _database.AspNetUserRoles.RemoveRange(userRoles);
             return _database.SaveChanges();
         }
 
@@ -50,11 +57,15 @@ namespace AspNet.Identity.SQLite.EF
         public int Insert(IdentityUser user, string roleId)
         {
 
-            AspNetUserRoles userRole = new AspNetUserRoles();
-            userRole.UserId = user.Id;
-            userRole.RoleId = roleId;
-            _database.AspNetUserRoles.Add(userRole);
+            var role = _database.AspNetRoles.Find(roleId);
+            _database.AspNetUsers.Find(user.Id).AspNetRoles.Add(role);
             return _database.SaveChanges();
+
+            //AspNetUserRoles userRole = new AspNetUserRoles();
+            //userRole.UserId = user.Id;
+            //userRole.RoleId = roleId;
+            //_database.AspNetUserRoles.Add(userRole);
+            //return _database.SaveChanges();
         }
     }
 }

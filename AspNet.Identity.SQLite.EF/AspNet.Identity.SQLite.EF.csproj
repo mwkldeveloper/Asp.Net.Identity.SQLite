@@ -77,7 +77,6 @@
     <Compile Include="AspNetUser.cs" />
     <Compile Include="AspNetUserClaim.cs" />
     <Compile Include="AspNetUserLogin.cs" />
-    <Compile Include="AspNetUserRoles.cs" />
     <Compile Include="IdentityRole.cs" />
     <Compile Include="IdentityUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

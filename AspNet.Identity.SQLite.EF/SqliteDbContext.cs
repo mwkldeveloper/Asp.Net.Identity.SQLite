@@ -18,7 +18,6 @@ namespace AspNet.Identity.SQLite.EF
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
 
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
  
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
