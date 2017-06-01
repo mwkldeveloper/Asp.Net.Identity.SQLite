@@ -86,7 +86,7 @@ namespace AspNet.Identity.SQLite.EF
             modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.AspNetRoles)
                 .WithMany(e => e.AspNetUsers)
-                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("UserId").MapRightKey("RoleId"));
+                .Map(m => m.ToTable("AspNetUserRole").MapLeftKey("UserId").MapRightKey("RoleId"));
 
         }
     }
