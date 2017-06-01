@@ -28,8 +28,8 @@ namespace AspNet.Identity.SQLite.EF
         public ClaimsIdentity FindByUserId(string userId)
         {
             ClaimsIdentity claims = new ClaimsIdentity();
-            var claimsList = _database.AspNetUserClaims.Where(c => c.UserId == userId)
-                .Select(x => new Claim(x.ClaimType, x.ClaimValue)).ToList();
+			var claimsList = _database.AspNetUserClaims.Where(c => c.UserId == userId).ToList()
+				.Select(x => new Claim(x.ClaimType, x.ClaimValue));
             claims.AddClaims(claimsList);
             return claims;
         }

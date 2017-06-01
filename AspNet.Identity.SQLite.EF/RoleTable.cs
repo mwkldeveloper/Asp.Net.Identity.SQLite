@@ -55,7 +55,7 @@ namespace AspNet.Identity.SQLite.EF
         public string GetRoleName(string roleId)
         {
 
-            return _database.AspNetRoles.Find(roleId).Name;
+            return _database.AspNetRoles.Find(roleId)?.Name;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace AspNet.Identity.SQLite.EF
         /// <returns>Role's Id</returns>
         public string GetRoleId(string roleName)
         {
-            return _database.AspNetRoles.SingleOrDefault(r=>r.Name==roleName).Id;
+            return _database.AspNetRoles.SingleOrDefault(r=>r.Name == roleName)?.Id;
         }
 
         /// <summary>

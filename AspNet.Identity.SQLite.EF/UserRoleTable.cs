@@ -26,7 +26,7 @@ namespace AspNet.Identity.SQLite.EF
         /// <returns></returns>
         public List<string> FindByUserId(string userId)
         {
-            return _database.AspNetUsers.Where(x => x.Id == userId).SelectMany(x => x.AspNetRoles).Select(x => x.Name).ToList();
+            return _database.AspNetUsers.Where(x => x.Id == userId).SelectMany(x => x.AspNetRoles).Select(x => x.Name)?.ToList();
         }
 
         /// <summary>
@@ -42,9 +42,6 @@ namespace AspNet.Identity.SQLite.EF
             {
                 roles.Remove(role);
             }
-
-            //var userRoles = _database.AspNetUserRoles.Where(x => x.UserId == userId);
-            // _database.AspNetUserRoles.RemoveRange(userRoles);
             return _database.SaveChanges();
         }
 
@@ -60,12 +57,6 @@ namespace AspNet.Identity.SQLite.EF
             var role = _database.AspNetRoles.Find(roleId);
             _database.AspNetUsers.Find(user.Id).AspNetRoles.Add(role);
             return _database.SaveChanges();
-
-            //AspNetUserRoles userRole = new AspNetUserRoles();
-            //userRole.UserId = user.Id;
-            //userRole.RoleId = roleId;
-            //_database.AspNetUserRoles.Add(userRole);
-            //return _database.SaveChanges();
         }
     }
 }

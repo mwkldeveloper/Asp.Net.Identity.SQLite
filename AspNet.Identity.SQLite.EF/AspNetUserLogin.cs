@@ -6,6 +6,7 @@ namespace AspNet.Identity.SQLite.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("AspNetUserLogin")]
     public partial class AspNetUserLogin
     {
         [Key]

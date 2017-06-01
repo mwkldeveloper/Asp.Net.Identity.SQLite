@@ -13,6 +13,11 @@ namespace AspNet.Identity.SQLite.EF
         {
         }
 
+        public SQLiteIdenitityDbContext(string connectionString)
+          : base(connectionString)
+        {
+        }
+
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
@@ -83,8 +88,6 @@ namespace AspNet.Identity.SQLite.EF
                 .WithMany(e => e.AspNetUsers)
                 .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("UserId").MapRightKey("RoleId"));
 
-            var sqliteConnectionInitializer = new SqliteDropCreateDatabaseWhenModelChanges<SQLiteIdenitityDbContext>(modelBuilder);
-            Database.SetInitializer(sqliteConnectionInitializer);
         }
     }
 }
