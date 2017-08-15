@@ -61,6 +61,7 @@ namespace AspNet.Identity.SQLite.EF
 
                 user.Id = row.Id;
                 user.UserName = row.UserName;
+				user.Roles = row.AspNetRoles;
                 user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
                 user.SecurityStamp = string.IsNullOrEmpty(row.SecurityStamp) ? null : row.SecurityStamp;
                 user.Email = string.IsNullOrEmpty(row.Email) ? null : row.Email;
@@ -91,7 +92,8 @@ namespace AspNet.Identity.SQLite.EF
 
             user.Id = row.Id;
             user.UserName = row.UserName;
-            user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
+			user.Roles = row.AspNetRoles;
+			user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
             user.SecurityStamp = string.IsNullOrEmpty(row.SecurityStamp) ? null : row.SecurityStamp;
             user.Email = string.IsNullOrEmpty(row.Email) ? null : row.Email;
             user.EmailConfirmed = row.EmailConfirmed.ToString() == "1" ? true : false;
@@ -105,12 +107,39 @@ namespace AspNet.Identity.SQLite.EF
             return user;
         }
 
-        /// <summary>
-        /// Returns a list of TUser instances given a user name
-        /// </summary>
-        /// <param name="userName">User's name</param>
-        /// <returns></returns>
-        public List<TUser> GetUserByName(string userName)
+
+		public IEnumerable<TUser> GetUsersByRole(string role)
+		{
+			var rows = _database.AspNetUsers.Where(u => u.AspNetRoles.Any(r => r.Name == role));
+			List<TUser> userlist = new List<TUser>();
+			foreach (var row in rows)
+			{
+				TUser user = null;
+				user = (TUser)Activator.CreateInstance(typeof(TUser));
+
+				user.Id = row.Id;
+				user.UserName = row.UserName;
+				user.Roles = row.AspNetRoles;
+				user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
+				user.SecurityStamp = string.IsNullOrEmpty(row.SecurityStamp) ? null : row.SecurityStamp;
+				user.Email = string.IsNullOrEmpty(row.Email) ? null : row.Email;
+				user.EmailConfirmed = row.EmailConfirmed.ToString() == "1" ? true : false;
+				user.PhoneNumber = string.IsNullOrEmpty(row.PhoneNumber) ? null : row.PhoneNumber;
+				user.PhoneNumberConfirmed = row.PhoneNumberConfirmed.ToString() == "1" ? true : false;
+				user.LockoutEnabled = row.LockoutEnabled.ToString() == "1" ? true : false;
+				user.LockoutEndDateUtc = string.IsNullOrEmpty(row.LockoutEndDateUtc.ToString()) ? DateTime.Now : row.LockoutEndDateUtc;
+				user.AccessFailedCount = string.IsNullOrEmpty(row.AccessFailedCount.ToString()) ? 0 : row.AccessFailedCount;
+				userlist.Add(user);
+			}
+			return userlist;
+		}
+
+		/// <summary>
+		/// Returns a list of TUser instances given a user name
+		/// </summary>
+		/// <param name="userName">User's name</param>
+		/// <returns></returns>
+		public List<TUser> GetUserByName(string userName)
         {
             List<TUser> users = new List<TUser>();
             var rows = _database.AspNetUsers.Where(u => u.UserName == userName);
@@ -121,7 +150,8 @@ namespace AspNet.Identity.SQLite.EF
 
                 user.Id = row.Id;
                 user.UserName = row.UserName;
-                user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
+				user.Roles = row.AspNetRoles;
+				user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
                 user.SecurityStamp = string.IsNullOrEmpty(row.SecurityStamp) ? null : row.SecurityStamp;
                 user.Email = string.IsNullOrEmpty(row.Email) ? null : row.Email;
                 user.EmailConfirmed = row.EmailConfirmed.ToString() == "1" ? true : false;
@@ -147,7 +177,8 @@ namespace AspNet.Identity.SQLite.EF
 
                 user.Id = row.Id;
                 user.UserName = row.UserName;
-                user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
+				user.Roles = row.AspNetRoles;
+				user.PasswordHash = string.IsNullOrEmpty(row.PasswordHash) ? null : row.PasswordHash;
                 user.SecurityStamp = string.IsNullOrEmpty(row.SecurityStamp) ? null : row.SecurityStamp;
                 user.Email = string.IsNullOrEmpty(row.Email) ? null : row.Email;
                 user.EmailConfirmed = row.EmailConfirmed.ToString() == "1" ? true : false;

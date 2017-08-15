@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 
 namespace AspNet.Identity.SQLite.EF
 {
@@ -37,10 +38,12 @@ namespace AspNet.Identity.SQLite.EF
         /// </summary>
         public string UserName { get; set; }
 
-        /// <summary>
-        ///     Email
-        /// </summary>
-        public virtual string Email { get; set; }
+
+		public ICollection<AspNetRole> Roles { get; set; }
+		/// <summary>
+		///     Email
+		/// </summary>
+		public virtual string Email { get; set; }
 
         /// <summary>
         ///     True if the email is confirmed, default is false

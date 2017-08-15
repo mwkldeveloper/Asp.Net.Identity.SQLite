@@ -107,12 +107,31 @@ namespace AspNet.Identity.SQLite.EF
             return Task.FromResult<TUser>(null);
         }
 
-        /// <summary>
-        /// Returns an TUser instance based on a userName query 
-        /// </summary>
-        /// <param name="userName">The user's name</param>
-        /// <returns></returns>
-        public Task<TUser> FindByNameAsync(string userName)
+
+		public Task<ICollection<TUser>> FindByRoleAsync(string role)
+		{
+			if (string.IsNullOrEmpty(role))
+			{
+				throw new ArgumentException("Null or empty argument: role");
+			}
+
+			ICollection<TUser> result = userTable.GetUsersByRole(role) as ICollection<TUser>;
+			if (result != null)
+			{
+				return Task.FromResult<ICollection<TUser>>(result);
+			}
+
+			return Task.FromResult<ICollection<TUser>>(null);
+		}
+
+
+
+		/// <summary>
+		/// Returns an TUser instance based on a userName query 
+		/// </summary>
+		/// <param name="userName">The user's name</param>
+		/// <returns></returns>
+		public Task<TUser> FindByNameAsync(string userName)
         {
             if (string.IsNullOrEmpty(userName))
             {
