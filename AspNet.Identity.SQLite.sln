@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Identity.SQLite", "AspNet.Identity.SQLite\AspNet.Identity.SQLite.csproj", "{35DAC40A-38D0-43BD-8DCF-34E4061F0A75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Identity.SQLite.EF", "AspNet.Identity.SQLite.EF\AspNet.Identity.SQLite.EF.csproj", "{D34D1279-F264-4A90-B4A5-2AAE4DE5D0D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{1A5BDEEE-C671-4AB9-BA0E-7C3AA129B15B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{D34D1279-F264-4A90-B4A5-2AAE4DE5D0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D34D1279-F264-4A90-B4A5-2AAE4DE5D0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D34D1279-F264-4A90-B4A5-2AAE4DE5D0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A5BDEEE-C671-4AB9-BA0E-7C3AA129B15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A5BDEEE-C671-4AB9-BA0E-7C3AA129B15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A5BDEEE-C671-4AB9-BA0E-7C3AA129B15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A5BDEEE-C671-4AB9-BA0E-7C3AA129B15B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7A2A19F-CF00-4472-B87E-CEF12F6DFF91}
 	EndGlobalSection
 EndGlobal
