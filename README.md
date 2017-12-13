@@ -38,7 +38,7 @@ Uasge:
      ```
 10.  Open the IdentityConfig.cs file. In the ApplicationUserManager.Create method, replace instantiating UserManager with the following code:
   ```
-        var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>() as SQLiteDatabase));
+        var manager = new ApplicationUserManager(new UserStore<ApplicationUser, IdentityRole>(context.Get<ApplicationDbContext>() as SQLiteDatabase));
   ```
 11. replace the DefaultConnection with your connection string in web.config
 12. Test it and have fun
