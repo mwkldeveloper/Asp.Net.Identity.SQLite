@@ -42,7 +42,7 @@ namespace AspNet.Identity.SQLite.EF
 		/// <returns></returns>
 		public string GetUserId(string userName)
 		{
-			return _database.AspNetUsers.Where(u => u.UserName == userName).Select(u => u.Id).SingleOrDefault();
+			return _database.AspNetUsers.Where(u => u.UserName.ToLower() == userName.ToLower()).Select(u => u.Id).SingleOrDefault();
 		}
 
 		/// <summary>
@@ -143,7 +143,7 @@ namespace AspNet.Identity.SQLite.EF
 		public List<TUser> GetUserByName(string userName)
 		{
 			List<TUser> users = new List<TUser>();
-			var rows = _database.AspNetUsers.Where(u => u.UserName == userName);
+			var rows = _database.AspNetUsers.Where(u => u.UserName.ToLower() == userName.ToLower());
 			foreach (var row in rows)
 			{
 				TUser user = null;
